@@ -1,0 +1,332 @@
+
+<!-- saved from url=(0041)https://yaden2018.github.io/multispeaker/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Forward-Backward Decoding for Regularizing End-to-End TTS
+</title>
+    <link rel="shortcut icon" href="https://vancycici.github.io/fbdecode/img/ms.jpg">
+    <link rel="icon" href="https://vancycici.github.io/fbdecode/img/ms.jpg">
+    <link rel="apple-touch-icon" href="https://vancycici.github.io/fbdecode/img/ms.jpg">
+</head>
+<body>
+<script type="text/javascript" async="" src="./Forward-Backward Decoding for Regularizing End-to-End TTS_files/analytics.js.download"></script><script async="" src="./Forward-Backward Decoding for Regularizing End-to-End TTS_files/js"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-125850295-1');
+</script>
+
+<article>
+    <header>
+        <h1>Forward-Backward Decoding for Regularizing End-to-End TTS</h1>
+    </header>
+</article> 
+<div><b>Authors:</b> Yibin Zheng, Xi Wang, Lei He, Shifeng Pan, Frank K. Soong, Zhengqi Wen, Jianhua Tao</a> (Submitted to Interspeech 2019</a>)</div>
+ 
+<div><b>Abstract:</b> Neural end-to-end TTS can generate very high-quality synthesized speech, and even close to human recording within similar domain text. However, it performs unsatisfactory when scaling it to challenging test sets. One concern is that the encoder-decoder with attention-based network adopts autoregressive generative sequence model with the limitation of “exposure bias”. To address this issue, we propose two novel methods, which learn to predict future by improving agreement between forward and backward decoding sequence. The first one is achieved by introducing divergence regularization terms into model training objective to reduce the mismatch between two directional models, namely L2R and R2L (which generates targets from left-to-right and right-to-left, respectively). While the second one operates on decoder-level and exploits the future information during decoding. In addition, we employ a joint training strategy to allow forward and backward decoding to improve each other in an interactive process. Experimental results show our proposed methods especially the second one (bidirectional decoder regularization), leads a significantly improvement on both robustness and overall naturalness, as outperforming baseline (the revised version of Tacotron2) with aMOS gap of 0.14 in a challenging test, and achieving close to human quality (4.42 vs. 4.49 in MOS) on general test.
+</div> 
+
+<div>
+    <h3>Subjective Preference/MOS test samples from phoneme-based TTS out-of-domain test</h3>
+    
+        “The West German experimental VTOL plane was developed in nineteen sixty eight to meet NATO specifications but cancelled in nineteen seventy due to technical challenges , high cost , and changing specifications ..”
+        <table><tbody><tr>
+            <td>Char Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_baseline_out_1.wav">
+                </audio>
+            </td>
+            <td></td>
+            <td>Char Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_bidecoder_out_1.wav">
+                </audio>
+            </td>
+        </tr>
+            <td>Phone Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_baseline_out_1.wav">
+                </audio>
+            </td>
+            <td></td>
+            <td>Phone Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_bidecoder_out_1.wav">
+                </audio>
+            </td>
+        </tr>
+    </tbody></table>
+
+    
+        “Hans Michelbach , a lawmaker from the Christian Social Union ( CSU ) , the Bavarian sister party of Chancellor Angela Merkel's Christian Democratic Union ( CDU ) , urged the government to sell its fifteen percent stake in Commerzbank before a deal ..”
+        <table><tbody><tr>
+            <td>Char Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_baseline_out_2.wav">
+                </audio>
+            </td>
+            <td></td>
+            <td>Char Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_bidecoder_out_2.wav">
+                </audio>
+            </td>
+        </tr>
+            <td>Phone Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_baseline_out_2.wav">
+                </audio>
+            </td>
+            <td></td>
+            <td>Phone Bi-Forward-Decoder</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_bidecoder_out_2.wav">
+                </audio>
+            </td>
+        </tr>
+    </tbody></table>
+
+    
+        “Songs by Muddy Waters include Mannish Boy , I'm Your Hoochie Coochie Man , and thirty six others .”
+        <table><tbody><tr>
+            <td>Char Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_baseline_out_3.wav">
+                </audio>
+            </td>
+            <td></td>
+            <td>Char Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_bidecoder_out_3.wav">
+                </audio>
+            </td>
+        </tr>
+            <td>Phone Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_baseline_out_3.wav">
+                </audio>
+            </td>
+            <td></td>
+            <td>Phone Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_bidecoder_out_3.wav">
+                </audio>
+            </td>
+        </tr>
+    </tbody></table> 
+
+</div>
+    <h3>Intelligible test samples from both character and phoneme-based TTS challenging out-of-domain</h3>
+
+        “zero fff zero zero zero zero zero x zero four E eight A six CC eighty one ce zero zero zero zero ..”
+        <table><tbody><tr>
+            <td>Char Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_baseline_int_1.wav">
+                </audio>
+            </td>
+            <td></td>
+            <td>Char Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_bidecoder_int_1.wav">
+                </audio>
+            </td>
+        </tr>
+            <td>Phone Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_baseline_int_1.wav">
+                </audio>
+            </td>
+            <td></td>
+            <td>Phone Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_bidecoder_int_1.wav">
+                </audio>
+            </td>
+        </tr>
+    </tbody></table> 
+        
+        “Mine is here backslash backslash g a b e h a l l hyphen m o t h r a backslash S v r underscore O f f i c e s v r .”
+        <table><tbody><tr>
+            <td>Char Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_baseline_int_2.wav">
+                </audio>
+            </td>  
+            <td>Char Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_bidecoder_int_2.wav">
+                </audio>
+            </td>
+        </tr>
+            <td>Phone Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_baseline_int_2.wav">
+                </audio>
+            </td>
+            <td>Phone Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_bidecoder_int_2.wav">
+                </audio>
+            </td>
+        </tr>
+        </tbody></table> 
+
+
+        “Not Run zero point zero zero percent \ n nine \ n zero \ n zero \ n zero \ n zero \ n zero \ n nine \ n zero \ nInternal , Exchange , EdgeExtensibility , RecipientAPI , BVT No Associated Log Files .“
+        <table><tbody><tr>
+            <td>Char Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_baseline_int_3.wav">
+                </audio>
+            </td> 
+            <td>Char Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_bidecoder_int_3.wav">
+                </audio>
+            </td>
+        </tr>
+            <td>Phone Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_baseline_int_3.wav">
+                </audio>
+            </td>
+            <td>Phone Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_bidecoder_int_3.wav">
+                </audio>
+            </td>
+        </tr>
+    </tbody></table> 
+
+
+</div>
+
+</div>
+    <h3>Subjective MOS test samples from character and phoneme-based TTS for relative in-domain test</h3>
+
+        “Meanwhile , gypsies trying to leave Kosovo are being turned back by Serb officials .”
+        <table><tbody><tr>
+            <td>Char Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_baseline_in_1.wav">
+                </audio>
+            </td> 
+            <td>Char Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_bidecoder_in_1.wav">
+                </audio>
+            </td>
+        </tr>
+            <td>Phone Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_baseline_in_1.wav">
+                </audio>
+            </td>
+            <td>Phone Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_baseline_in_1.wav">
+                </audio>
+            </td>
+        </tr> 
+        <table><tbody><tr>
+        
+        “The Jazz appeared too stunned and too timid to retaliate .”
+        <table><tbody><tr>
+            <td>Char Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_baseline_in_2.wav"type="audio/wav">
+                </audio>
+            </td>  
+            <td>Char Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_bidecoder_in_2.wav">
+                </audio>
+            </td>
+        </tr>>
+            <td>Phone Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_baseline_in_2.wav">
+                </audio>
+            </td>
+            <td>Phone Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_bidecoder_in_2.wav">
+                </audio>
+            </td>
+        </tr>
+    </tbody></table> 
+
+        “You're working up your crew psychology report?“
+        <table><tbody><tr>
+            <td>Char Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_baseline_in_3.wav">
+                </audio>
+            </td> 
+            <td>Char Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_bidecoder_in_3.wav">
+                </audio>
+            </td>
+        </tr>
+            <td>Phone Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_baseline_in_3.wav">
+                </audio>
+            </td>
+            <td>Phone Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_bidecoder_in_3.wav">
+                </audio>
+            </td>
+        </tr>
+    </tbody></table>
+
+
+</div>
+
+
+
+</body></html>
