@@ -1,5 +1,5 @@
 
-<!-- saved from url=(0041)https://yaden2018.github.io/multispeaker/ -->
+<!-- saved from url=(0041)https://vancycici.github.io/fbdecode/ -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <title>Forward-Backward Decoding for Regularizing End-to-End TTS
@@ -31,6 +31,126 @@
 <div><b>Abstract:</b> Neural end-to-end TTS can generate very high-quality synthesized speech, and even close to human recording within similar domain text. However, it performs unsatisfactory when scaling it to challenging test sets. One concern is that the encoder-decoder with attention-based network adopts autoregressive generative sequence model with the limitation of “exposure bias”. To address this issue, we propose two novel methods, which learn to predict future by improving agreement between forward and backward decoding sequence. The first one is achieved by introducing divergence regularization terms into model training objective to reduce the mismatch between two directional models, namely L2R and R2L (which generates targets from left-to-right and right-to-left, respectively). While the second one operates on decoder-level and exploits the future information during decoding. In addition, we employ a joint training strategy to allow forward and backward decoding to improve each other in an interactive process. Experimental results show our proposed methods especially the second one (bidirectional decoder regularization), leads a significantly improvement on both robustness and overall naturalness, as outperforming baseline (the revised version of Tacotron2) with aMOS gap of 0.14 in a challenging test, and achieving close to human quality (4.42 vs. 4.49 in MOS) on general test.
 </div> 
 
+</div>
+    <h3>Recording samples</h3>
+
+        “This mysterious man maintains a life devoid of passion.”
+        <table><tbody><tr>
+            <td>Recording:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/Recording_1.wav">
+                </audio>
+            </td> 
+        </tr> 
+        <table><tbody><tr>
+        
+        “This bonus warming, on the order of several degrees, boosted temperatures to unprecedented March levels.”
+        <table><tbody><tr>
+            <td>Recording:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/Recording_2.wav">
+                </audio>
+            </td>   
+        </tr>
+    </tbody></table> 
+
+</div>
+    <h3>Subjective MOS test samples from character and phoneme-based TTS for relative in-domain test</h3>
+
+        “Meanwhile , gypsies trying to leave Kosovo are being turned back by Serb officials .”
+        <table><tbody><tr>
+            <td>Char Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_baseline_in_1.wav">
+                </audio>
+            </td> 
+            <td>Char Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_bidecoder_in_1.wav">
+                </audio>
+            </td>
+        </tr>
+            <td>Phone Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_baseline_in_1.wav">
+                </audio>
+            </td>
+            <td>Phone Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_baseline_in_1.wav">
+                </audio>
+            </td>
+        </tr> 
+        <table><tbody><tr>
+        
+        “The Jazz appeared too stunned and too timid to retaliate .”
+        <table><tbody><tr>
+            <td>Char Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_baseline_in_2.wav"type="audio/wav">
+                </audio>
+            </td>  
+            <td>Char Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_bidecoder_in_2.wav">
+                </audio>
+            </td>
+        </tr>
+            <td>Phone Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_baseline_in_2.wav">
+                </audio>
+            </td>
+            <td>Phone Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_bidecoder_in_2.wav">
+                </audio>
+            </td>
+        </tr>
+    </tbody></table> 
+
+        “You're working up your crew psychology report?“
+        <table><tbody><tr>
+            <td>Char Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_baseline_in_3.wav">
+                </audio>
+            </td> 
+            <td>Char Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/char_bidecoder_in_3.wav">
+                </audio>
+            </td>
+        </tr>
+            <td>Phone Baseline:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_baseline_in_3.wav">
+                </audio>
+            </td>
+            <td>Phone Bi-Forward-Decoder:</td>
+            <td>
+                <audio controls="">
+                    <source src="wav/phon_bidecoder_in_3.wav">
+                </audio>
+            </td>
+        </tr>
+    </tbody></table>
+
+
+</div>
 <div>
     <h3>Subjective Preference/MOS test samples from phoneme-based TTS out-of-domain test</h3>
     
@@ -231,101 +351,6 @@
 
 </div>
 
-</div>
-    <h3>Subjective MOS test samples from character and phoneme-based TTS for relative in-domain test</h3>
-
-        “Meanwhile , gypsies trying to leave Kosovo are being turned back by Serb officials .”
-        <table><tbody><tr>
-            <td>Char Baseline:</td>
-            <td>
-                <audio controls="">
-                    <source src="wav/char_baseline_in_1.wav">
-                </audio>
-            </td> 
-            <td>Char Bi-Forward-Decoder:</td>
-            <td>
-                <audio controls="">
-                    <source src="wav/char_bidecoder_in_1.wav">
-                </audio>
-            </td>
-        </tr>
-            <td>Phone Baseline:</td>
-            <td>
-                <audio controls="">
-                    <source src="wav/phon_baseline_in_1.wav">
-                </audio>
-            </td>
-            <td>Phone Bi-Forward-Decoder:</td>
-            <td>
-                <audio controls="">
-                    <source src="wav/phon_baseline_in_1.wav">
-                </audio>
-            </td>
-        </tr> 
-        <table><tbody><tr>
-        
-        “The Jazz appeared too stunned and too timid to retaliate .”
-        <table><tbody><tr>
-            <td>Char Baseline:</td>
-            <td>
-                <audio controls="">
-                    <source src="wav/char_baseline_in_2.wav"type="audio/wav">
-                </audio>
-            </td>  
-            <td>Char Bi-Forward-Decoder:</td>
-            <td>
-                <audio controls="">
-                    <source src="wav/char_bidecoder_in_2.wav">
-                </audio>
-            </td>
-        </tr>>
-            <td>Phone Baseline:</td>
-            <td>
-                <audio controls="">
-                    <source src="wav/phon_baseline_in_2.wav">
-                </audio>
-            </td>
-            <td>Phone Bi-Forward-Decoder:</td>
-            <td>
-                <audio controls="">
-                    <source src="wav/phon_bidecoder_in_2.wav">
-                </audio>
-            </td>
-        </tr>
-    </tbody></table> 
-
-        “You're working up your crew psychology report?“
-        <table><tbody><tr>
-            <td>Char Baseline:</td>
-            <td>
-                <audio controls="">
-                    <source src="wav/char_baseline_in_3.wav">
-                </audio>
-            </td> 
-            <td>Char Bi-Forward-Decoder:</td>
-            <td>
-                <audio controls="">
-                    <source src="wav/char_bidecoder_in_3.wav">
-                </audio>
-            </td>
-        </tr>
-            <td>Phone Baseline:</td>
-            <td>
-                <audio controls="">
-                    <source src="wav/phon_baseline_in_3.wav">
-                </audio>
-            </td>
-            <td>Phone Bi-Forward-Decoder:</td>
-            <td>
-                <audio controls="">
-                    <source src="wav/phon_bidecoder_in_3.wav">
-                </audio>
-            </td>
-        </tr>
-    </tbody></table>
-
-
-</div>
 
 
 
